@@ -26,7 +26,7 @@ class _SignInState extends State<SignIn> {
             if (result == null)
               print('Could not sign in');
             else {
-              print('Signed in: $result');
+              print('Signed in: ${result.uid}');
             }
           },
           child: Text('Sign in anon'),
