@@ -2,18 +2,18 @@ import 'dart:developer';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-class Auth {
+class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   // sign in with anonymous
   Future signInAnon() async {
     try {
-      UserCredential result = await _auth
-          .signInAnonymously(); //AuthResult renamed to UserCredential
-      FirebaseUser user = result.user;
+      //AuthResult renamed to UserCredential
+      UserCredential result = await _auth.signInAnonymously();
+      User user = result.user; // FirebaseUser deprecated, use auh.User
       return user;
     } catch (e) {
-      print('Could not load sign in');
+      print('Could not load sign in: $e');
       return null;
     }
   }
