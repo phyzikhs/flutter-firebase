@@ -37,5 +37,12 @@ class AuthService {
   // register with email
 
   // sign out
-
+  Future signOut() async {
+    try {
+      return await _auth.signOut();
+    } catch (e) {
+      print('Could not sign out: $e');
+      return null;
+    }
+  }
 }
