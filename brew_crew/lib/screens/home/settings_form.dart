@@ -94,9 +94,11 @@ class _SettingsFormState extends State<SettingsForm> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
-                        print(_currentName ?? userBCData.name);
-                        print(_currentSugars);
-                        print(_currentStrength);
+                        await DatabaseService(uid: userBC.uid).updateUserData(
+                            _currentSugars ?? userBCData.sugars,
+                            _currentName ?? userBCData.name,
+                            _currentStrength ?? userBCData.strength);
+                        Navigator.pop(context);
                         // setState(() => loading = true);
                       }
                     },
