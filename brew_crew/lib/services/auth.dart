@@ -30,7 +30,19 @@ class AuthService {
     }
   }
 
-  // sign in with email
+  // sign in with email & password
+  Future signInWithEmailPassword(String email, String password) async {
+    try {
+      //AuthResult renamed to UserCredential
+      UserCredential result = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      User user = result.user; // FirebaseUser deprecated, use auh.User
+      return _userBCFromFirebaseUser(user);
+    } catch (e) {
+      print('Could not sign in user: $e');
+      return null;
+    }
+  }
 
   // register with email & password
   Future registerWithEmailPassword(String email, String password) async {
