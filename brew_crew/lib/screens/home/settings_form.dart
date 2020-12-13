@@ -55,6 +55,17 @@ class _SettingsFormState extends State<SettingsForm> {
             height: 20.0,
           ),
           // slider
+          Slider(
+            value: (_currentStrength ?? 100).toDouble(),
+            onChanged: (value) {
+              setState(() => _currentStrength = value.round()); //  as int
+            },
+            min: 100,
+            max: 900,
+            divisions: 8,
+            activeColor: Colors.brown[_currentStrength ?? 100],
+            inactiveColor: Colors.brown[_currentStrength ?? 100],
+          ),
           SizedBox(
             height: 20.0,
           ),
