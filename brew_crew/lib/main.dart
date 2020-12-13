@@ -1,6 +1,4 @@
 import 'package:brew_crew/models/user_bc.dart';
-import 'package:brew_crew/screens/authenticate/authenticate.dart';
-import 'package:brew_crew/screens/home/home.dart';
 import 'package:brew_crew/screens/wrapper.dart';
 import 'package:brew_crew/services/auth.dart';
 

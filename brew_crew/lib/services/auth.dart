@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:brew_crew/models/user_bc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -34,7 +32,19 @@ class AuthService {
 
   // sign in with email
 
-  // register with email
+  // register with email & password
+  Future registerWithEmailPassword(String email, String password) async {
+    try {
+      //AuthResult renamed to UserCredential
+      UserCredential result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      User user = result.user; // FirebaseUser deprecated, use auh.User
+      return _userBCFromFirebaseUser(user);
+    } catch (e) {
+      print('Could not register user: $e');
+      return null;
+    }
+  }
 
   // sign out
   Future signOut() async {
