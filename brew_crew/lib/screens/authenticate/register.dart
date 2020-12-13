@@ -15,6 +15,7 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
 
   // text field state
+  String name = '';
   String email = '';
   String password = '';
 
@@ -47,6 +48,18 @@ class _RegisterState extends State<Register> {
                 key: _formKey,
                 child: Column(
                   children: [
+                    SizedBox(
+                      height: 20.0,
+                    ),
+                    TextFormField(
+                      decoration:
+                          textInputDecoration.copyWith(hintText: 'Name'),
+                      validator: (value) =>
+                          value.isEmpty ? 'Enter your name' : null,
+                      onChanged: (value) {
+                        setState(() => name = value);
+                      },
+                    ),
                     SizedBox(
                       height: 20.0,
                     ),
@@ -88,7 +101,7 @@ class _RegisterState extends State<Register> {
                         if (_formKey.currentState.validate()) {
                           setState(() => loading = true);
                           dynamic result = await _auth
-                              .registerWithEmailPassword(email, password);
+                              .registerWithEmailPassword(name, email, password);
                           if (result == null) {
                             setState(() {
                               error = 'Please supply a valid email';
