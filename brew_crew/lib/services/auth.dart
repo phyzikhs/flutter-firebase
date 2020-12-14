@@ -26,7 +26,7 @@ class AuthService {
       User user = result.user; // FirebaseUser deprecated, use auh.User
       return _userBCFromFirebaseUser(user);
     } catch (e) {
-      print('Could not load sign in: $e');
+      // print('Could not load sign in: $e');
       return null;
     }
   }
@@ -40,7 +40,7 @@ class AuthService {
       User user = result.user; // FirebaseUser deprecated, use auh.User
       return _userBCFromFirebaseUser(user);
     } catch (e) {
-      print('Could not sign in user: $e');
+      // print('Could not sign in user: $e');
       return null;
     }
   }
@@ -59,7 +59,7 @@ class AuthService {
 
       return _userBCFromFirebaseUser(user);
     } catch (e) {
-      print('Could not register user: $e');
+      // print('Could not register user: $e');
       return null;
     }
   }
@@ -69,7 +69,7 @@ class AuthService {
     try {
       return await _auth.signOut();
     } catch (e) {
-      print('Could not sign out: $e');
+      // print('Could not sign out: $e');
       return null;
     }
   }

@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class UserBC {
   final String uid;
   UserBC({this.uid});
